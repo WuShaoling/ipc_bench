@@ -1,0 +1,1 @@
+docker run -it -v /Users/wsl/Projects/go/src/github.com/m3l:/go/src golang:stretch

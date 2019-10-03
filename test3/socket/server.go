@@ -1,22 +1,21 @@
 package main
 
 import (
-	"encoding/binary"
 	"io"
 	"log"
 	"net"
-	"os"
-	"time"
+)
+
+var (
+	ReceiveBufferSize = 1024
+	ServeAt           = ":8888"
+	ServeProtocol     = "tcp"
 )
 
 func echoServer(c net.Conn) {
-
-	buf := make([]byte, 4096)
-
+	buffer := make([]byte, ReceiveBufferSize)
 	for {
-		// read msg
-		_, err := c.Read(buf)
-		binary.BigEndian.PutUint64(buf[8:16], uint64(time.Now().UnixNano()))
+		_, err := c.Read(buffer)
 
 		// handler error
 		if err != nil {
@@ -27,7 +26,7 @@ func echoServer(c net.Conn) {
 		}
 
 		// 发送回去
-		if _, err = c.Write(buf); err != nil {
+		if _, err = c.Write(buffer); err != nil {
 			log.Println("write error: ", err)
 			return
 		}
@@ -35,15 +34,10 @@ func echoServer(c net.Conn) {
 }
 
 func main() {
-	log.Println("starting server")
-
-	// 前期清理工作
-	if _, e := os.Open("./go.socket"); e != nil {
-		os.Remove("./go.socket")
-	}
+	log.Printf("start %+v server at %+v", ServeProtocol, ServeAt)
 
 	// 开始监听
-	ln, err := net.Listen("unix", "./go.socket")
+	ln, err := net.Listen(ServeProtocol, ServeAt)
 	if err != nil {
 		log.Fatal("start server error: ", err)
 	}

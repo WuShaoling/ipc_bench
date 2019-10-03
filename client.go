@@ -1,33 +1,72 @@
 package main
 
 import (
-	"encoding/json"
-	"github.com/m3l/message"
+	"encoding/binary"
+	"fmt"
 	"io"
 	"log"
 	"net"
 	"time"
 )
 
-const Total = 30 * 10000
-const ProcessCount = 150
-const SendTimePerProcess = Total / ProcessCount
-
-var FillStr string
-
-type mmConn map[int]*message.Message
+type mmConn map[int][]byte
 type mmRoutine map[int]mmConn
 
-// 每次连接连续接收 K 个包，
+func handleResult(res []mmRoutine) {
+	// 对于每一个routine
+
+	sum1 := uint64(0)
+	sum2 := uint64(0)
+	sum3 := uint64(0)
+
+	for routineId, routine := range res {
+
+		routineLen := 0
+		routineSum1 := uint64(0)
+		routineSum2 := uint64(0)
+		routineSum3 := uint64(0)
+
+		// 对于每一个连接
+		for _, conn := range routine {
+			// 对于每一个消息
+			for _, msg := range conn {
+				t1 := binary.BigEndian.Uint64(msg[0:8])
+				t2 := binary.BigEndian.Uint64(msg[8:16])
+				t3 := binary.BigEndian.Uint64(msg[16:24])
+				routineSum1 += (t2 - t1) / 1000
+				routineSum2 += (t3 - t2) / 1000
+				routineSum3 += (t3 - t1) / 1000
+			}
+			routineLen += len(conn)
+		}
+
+		routineAvg1 := routineSum1 / uint64(routineLen)
+		routineAvg2 := routineSum2 / uint64(routineLen)
+		routineAvg3 := routineSum3 / uint64(routineLen)
+		fmt.Printf("%+v,%+v,%+v,%+v\n", routineId, routineAvg1, routineAvg2, routineAvg3)
+
+		sum1 += routineAvg1
+		sum2 += routineAvg2
+		sum3 += routineAvg3
+	}
+
+	ll := uint64(len(res))
+	if ll > 1 {
+		fmt.Printf("--> %+v,%+v,%+v\n", sum1/ll, sum2/ll, sum3/ll)
+	}
+}
+
+// 每次连接连续接收 K 个包，ClientSendTime, ServerReceiveTime, ClientReceiveTime
 func reader(conn io.Reader, signal chan mmConn, K int) {
 	count := 0
 	res := make(mmConn)
-	buf := make([]byte, 4096)
 
+	buffer := make([]byte, 4096)
 	for {
+
 		// read
-		n, err := conn.Read(buf)
-		receiveTime := time.Now().UnixNano()
+		_, err := conn.Read(buffer)
+		binary.BigEndian.PutUint64(buffer[16:24], uint64(time.Now().UnixNano()))
 
 		// handle error
 		if err != nil {
@@ -35,28 +74,21 @@ func reader(conn io.Reader, signal chan mmConn, K int) {
 			return
 		}
 
-		// 保存下来，等待分析
-		msg := &message.Message{}
-		err = json.Unmarshal(buf[0:n], msg)
-		if err != nil {
-			log.Println("json.Unmarshal error: ", n, err)
-			continue
-		}
-		msg.CReceiveTime = receiveTime
-		res[count] = msg
+		// 赋值
+		res[count] = buffer[0:24]
 
 		// 判断是否达到次数
+		count++
 		if count >= K {
 			signal <- res
 			return
 		}
-		count++
 	}
 }
 
 func doAConnection(K int) mmConn {
 	// 建立连接
-	conn, err := net.Dial("unix", "go.socket")
+	conn, err := net.Dial("unix", "./go.socket")
 	if err != nil {
 		log.Fatal("dial error", err)
 	}
@@ -67,20 +99,13 @@ func doAConnection(K int) mmConn {
 	go reader(conn, signal, K)
 
 	// 开始写进程，发送K个包
-	msg := message.Message{Content: FillStr}
 	for i := 0; i < K; i++ {
 
-		msg.CSendTime = time.Now().UnixNano()
-		msg.ServerTime = time.Now().UnixNano()
+		buffer := make([]byte, 4096)
+		binary.BigEndian.PutUint64(buffer[0:8], uint64(time.Now().UnixNano()))
 
-		sendData, err := json.Marshal(msg)
-		if err != nil {
-			log.Println("json.Marshal error: ", err)
-			continue
-		}
-
-		if _, err = conn.Write(sendData); err != nil {
-			log.Println("send error: ", err)
+		if _, err = conn.Write(buffer); err != nil {
+			fmt.Println("send error: ", err)
 		}
 	}
 
@@ -98,7 +123,6 @@ func doConnections(K, N int, signal chan mmRoutine) {
 
 	for connId := 0; connId < N; connId++ {
 		mRoutine[connId] = doAConnection(K)
-		log.Printf("connection %+v ok", connId)
 	}
 
 	signal <- mRoutine
@@ -116,32 +140,40 @@ func doTest(M, N, K int) {
 		}(routineId)
 	}
 
-	select {
-	case res := <-signal:
-		log.Println("routine ok")
-		result = append(result, res)
+	count := 0
+	for {
+		select {
+		case res := <-signal:
+			result = append(result, res)
+
+			count++
+			if count == M {
+				handleResult(result)
+				return
+			}
+		}
 	}
 }
+
+//var testSetM = []int{1, 		1, 		1, 		10,		10,		10,		100,	100, 	100,	200}
+//var testSetN = []int{1, 		10, 	100,	1,		10,		100,	1,		10,		100,	100}
+//var testSetK = []int{10000, 	10000, 	10000, 	10000,	10000,	1000,	10000,	10000,	10000,	1000}
 
 func main() {
-	FillStr = GenStr(4000)
+
 	M := 1
 	N := 1
-	K := 100
+	K := 10000
+	fmt.Printf("%+v,%+v,%+v\n", M, N, K)
 	doTest(M, N, K)
-}
 
-func GenStr(n int) string {
-	str := ""
-	for i := 0; i < n; i++ {
-		str += "a"
-	}
-	return str
+	//for i := 0; i < len(testSetM); i++ {
+	//
+	//	M := testSetM[i]
+	//	N := testSetN[i]
+	//	K := testSetK[i]
+	//
+	//	fmt.Printf("--->%+v,%+v,%+v\n", M, N, K)
+	//	doTest(M, N, K)
+	//}
 }
-
-// 输出微秒时间
-//fmt.Printf("%+v,%+v,%+v\n",
-//	(msg.ServerTime-msg.CSendTime)/1000,
-//	(receiveTime-msg.ServerTime)/1000,
-//	(receiveTime-msg.CSendTime)/1000,
-//)

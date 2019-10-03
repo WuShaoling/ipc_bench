@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-const Total = 30 * 10000
-const ProcessCount = 50
+const Total = 1 * 10000
+const ProcessCount = 1
 const SendTimePerProcess = Total / ProcessCount
 
 func reader(conn io.Reader) {
