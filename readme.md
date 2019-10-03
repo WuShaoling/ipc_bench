@@ -38,3 +38,7 @@ go run client.go
 
 ### run in docker
 docker run -it -v $PWD:/go/src golang:stretch
+
+## 结果说明
+
+命名方式：domain-result-{进程数(起始大小-步长-次数)}-(连接数)-{消息数(起始大小-步长-次数)}-(包大小)-(测试组数)

@@ -192,22 +192,22 @@ func parseFlag() {
 }
 
 func main() {
-	fmt.Printf("start %+v test\n", Protocol)
+	//fmt.Printf("start %+v test\n", Protocol)
 
 	parseFlag()
 
 	// 以RoutineCount为变量
-	for RoutineCount = 1; RoutineCount <= 50; RoutineCount++ {
+	for i := 0; i < 20; i++ {
+		RoutineCount += 5
 		doTest()
-		fmt.Println()
-		time.Sleep(time.Millisecond * 100)
 	}
 
-	//以MessageCount为变量，以1000为步长，测试 50 组数据
+	////以MessageCount为变量，以1000为步长，测试 50 组数据
 	//MessageCount = 10000
-	//for i := 0; i < 50; i++ {
+	//for i := 0; i < 100; i++ {
 	//	MessageCount += 1000
 	//	doTest()
-	//	time.Sleep(time.Millisecond * 100)
 	//}
+
+	fmt.Println()
 }

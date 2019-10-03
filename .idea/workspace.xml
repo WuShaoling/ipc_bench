@@ -31,7 +31,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ipc_bench/bench2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ipc_bench/bench1/routine_count_result" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -39,18 +39,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1/routine_count_result" />
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1/socket" />
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1/domain" />
       <recent name="$PROJECT_DIR$/../ipc_bench/bench2" />
       <recent name="$PROJECT_DIR$/test3/uds" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/test2/uds" />
-      <recent name="$PROJECT_DIR$/test2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1/routine_count_result/old" />
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1/message_count_result/old" />
       <recent name="$PROJECT_DIR$/../ipc_bench/bench1" />
       <recent name="$PROJECT_DIR$/../ipc_bench/other" />
       <recent name="$PROJECT_DIR$/../ipc_bench" />
-      <recent name="$PROJECT_DIR$/test1" />
-      <recent name="$PROJECT_DIR$/test2" />
     </key>
   </component>
   <component name="RunDashboard">
