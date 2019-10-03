@@ -1,3 +1,3 @@
-module github.com/m3l
+module github.com/ipc_bench
 
 go 1.12

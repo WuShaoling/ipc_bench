@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ce2e514-47cb-4937-9a91-862a9051e803" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/results/result.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2/tcp/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2/tcp/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2/uds/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test2/uds/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test3/domain/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test3/domain/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test3/socket/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test3/socket/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_service/get_files.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/message/message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcp/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/test1/tcp1/client.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcp/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/test1/tcp1/server.go" afterDir="false" />
-    </list>
+    <list default="true" id="4ce2e514-47cb-4937-9a91-862a9051e803" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +17,7 @@
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../ipc_bench" />
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
@@ -64,6 +44,8 @@
       <recent name="$PROJECT_DIR$/tcp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../ipc_bench/other" />
+      <recent name="$PROJECT_DIR$/../ipc_bench" />
       <recent name="$PROJECT_DIR$/test1" />
       <recent name="$PROJECT_DIR$/test2" />
       <recent name="$PROJECT_DIR$/message" />
@@ -81,29 +63,76 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build client.go">
-    <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="m3l" />
-      <working_directory value="$PROJECT_DIR$" />
+  <component name="RunManager" selected="Go Build.go build client.go (1)">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/test3/socket/client.go" />
+      <filePath value="$PROJECT_DIR$/" />
       <package value="github.com/m3l" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/m3l/test2/uds" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="m3l" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test2/uds/server.go" />
-      <package value="github.com/m3l/test2/uds/server.go" />
+    <configuration name="go build client.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/socket/client.go" />
+      <package value="github.com/m3l" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench/domain" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/domain/client.go" />
+      <package value="github.com/m3l" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build server.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/socket/server.go" />
+      <package value="github.com/m3l" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench/domain" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/domain/server.go" />
+      <package value="github.com/m3l" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="github.com/m3l" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build server.go" />
+      <item itemvalue="Go Build.go build client.go" />
+      <item itemvalue="Go Build.go build server.go (1)" />
+      <item itemvalue="Go Build.go build client.go (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build client.go (1)" />
+        <item itemvalue="Go Build.go build server.go (1)" />
         <item itemvalue="Go Build.go build client.go" />
-        <item itemvalue="Go Build.go build github.com/m3l/test2/uds" />
+        <item itemvalue="Go Build.go build server.go" />
       </list>
     </recent_temporary>
   </component>

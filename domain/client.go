@@ -11,7 +11,7 @@ import (
 
 const (
 	BufferSize = 1024
-	Protocol   = "tcp"
+	Protocol   = "unix"
 )
 
 var (
@@ -147,9 +147,9 @@ func show(routineDurations [][]int64) {
 }
 
 func parseFlag() {
-	routineCount := flag.Int("r", 10, "routine count")
+	routineCount := flag.Int("r", 1, "routine count")
 	connectionCount := flag.Int("conn", 10, "connection count")
-	messageCount := flag.Int("c", 1000, "messageCount count")
+	messageCount := flag.Int("c", 10000, "messageCount count")
 	messageSize := flag.Int("s", 2048, "message size")
 	var serverAddress *string
 	if Protocol == "tcp" {
