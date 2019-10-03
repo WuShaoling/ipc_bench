@@ -31,25 +31,26 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test3/uds" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ipc_bench/bench2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench2" />
       <recent name="$PROJECT_DIR$/test3/uds" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/test2/uds" />
       <recent name="$PROJECT_DIR$/test2" />
-      <recent name="$PROJECT_DIR$/tcp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../ipc_bench/bench1" />
       <recent name="$PROJECT_DIR$/../ipc_bench/other" />
       <recent name="$PROJECT_DIR$/../ipc_bench" />
       <recent name="$PROJECT_DIR$/test1" />
       <recent name="$PROJECT_DIR$/test2" />
-      <recent name="$PROJECT_DIR$/message" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -64,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build client.go (1)">
+  <component name="RunManager" selected="Go Build.go build client.go (3)">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="ipc_bench" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -84,11 +85,20 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build client.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ipc_bench" />
-      <working_directory value="$PROJECT_DIR$/../ipc_bench/domain" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/../ipc_bench/domain/client.go" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/bench1/socket/client.go" />
+      <package value="github.com/m3l" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build client.go (3)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ipc_bench" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/bench1/domain/client.go" />
       <package value="github.com/m3l" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
@@ -102,11 +112,11 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build server.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ipc_bench" />
-      <working_directory value="$PROJECT_DIR$/../ipc_bench/domain" />
+      <working_directory value="$PROJECT_DIR$/../ipc_bench" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/../ipc_bench/domain/server.go" />
+      <filePath value="$PROJECT_DIR$/../ipc_bench/bench2/domain/server.go" />
       <package value="github.com/m3l" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
@@ -123,17 +133,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build server.go" />
-      <item itemvalue="Go Build.go build client.go" />
       <item itemvalue="Go Build.go build server.go (1)" />
       <item itemvalue="Go Build.go build client.go (1)" />
+      <item itemvalue="Go Build.go build server.go (2)" />
+      <item itemvalue="Go Build.go build client.go (2)" />
+      <item itemvalue="Go Build.go build client.go (3)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build client.go (3)" />
+        <item itemvalue="Go Build.go build client.go (2)" />
+        <item itemvalue="Go Build.go build server.go (2)" />
         <item itemvalue="Go Build.go build client.go (1)" />
         <item itemvalue="Go Build.go build server.go (1)" />
-        <item itemvalue="Go Build.go build client.go" />
-        <item itemvalue="Go Build.go build server.go" />
       </list>
     </recent_temporary>
   </component>

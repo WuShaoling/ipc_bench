@@ -25,8 +25,6 @@ var (
 
 func reader(conn io.Reader, signal chan bool) {
 	buffer := make([]byte, BufferSize)
-	sum := 0
-	total := MessageCount * MessageSize
 	for {
 		// read
 		n, err := conn.Read(buffer)
@@ -38,12 +36,9 @@ func reader(conn io.Reader, signal chan bool) {
 			return
 		}
 
-		// return
-		sum += n
-		if sum >= total {
-			signal <- true
-			return
-		}
+		log.Println(string(buffer[0:n]))
+		signal <- true
+		return
 	}
 }
 
@@ -65,10 +60,12 @@ func doAConnection() {
 			fmt.Println("send error: ", err)
 		}
 	}
+	log.Println("send message ok")
 
 	// 接收结果并返回
 	select {
 	case <-signal:
+		log.Println("doAConnection ok")
 		return
 	}
 }
@@ -148,8 +145,8 @@ func show(routineDurations [][]int64) {
 
 func parseFlag() {
 	routineCount := flag.Int("r", 1, "routine count")
-	connectionCount := flag.Int("conn", 10, "connection count")
-	messageCount := flag.Int("c", 10000, "messageCount count")
+	connectionCount := flag.Int("conn", 1, "connection count")
+	messageCount := flag.Int("c", 100000, "messageCount count")
 	messageSize := flag.Int("s", 2048, "message size")
 	var serverAddress *string
 	if Protocol == "tcp" {
